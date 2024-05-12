@@ -1,4 +1,5 @@
 import Database from 'better-sqlite3';
+import type { Lemma, Translation } from './types';
 const DB_PATH = process.env.DB_PATH;
 
 const db = new Database(DB_PATH, {readonly: true});
@@ -8,7 +9,7 @@ export function stats() {
 		SELECT
 			(SELECT COUNT(DISTINCT id) FROM translations) AS translations,
 			(SELECT COUNT(DISTINCT id) FROM lemmas) AS lemmas
-		`).get() as {translations: number, lemmas: number};
+		`).get() as {translations: number; lemmas: number};
 		return { translations, lemmas };
 	}
 
@@ -20,7 +21,7 @@ export function search(term: string) {
 			LIKE ?
 		ORDER BY lemma
 			COLLATE NOCASE ASC
-	`).all(`${term}%`);
+	`).all(`${term}%`) as Lemma[];
 }
 
 export function lemma(id: number) {
@@ -28,5 +29,5 @@ export function lemma(id: number) {
 		SELECT source, target
 		FROM translations
 		WHERE lemma_id = ?
-	`).all(id);
+	`).all(id) as Translation[];
 }
