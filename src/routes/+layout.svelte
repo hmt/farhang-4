@@ -1,4 +1,3 @@
-<!-- svelte-ignore slot_element_deprecated -->
 <div class="mx-auto p-2 sm:p-4 flex flex-col noto-sans-400 dark:bg-slate-900 dark:text-white min-h-screen">
 	<div>
 		<div class="noto-sans-900 text-center relative">Farhang</div>
@@ -20,13 +19,12 @@
 <script lang="ts">
 	import { browser } from "$app/environment";
 	import "../app.css";
+
 	function toggleDarkMode() {
-		if (browser) {
-			if (document.documentElement.classList.contains('dark')) {
+		if (browser)
+			if (document.documentElement.classList.contains('dark'))
 				document.documentElement.classList.remove('dark');
-			} else {
+			else
 				document.documentElement.classList.add('dark');
-			}
-		}
 	};
 </script>

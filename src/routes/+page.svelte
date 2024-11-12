@@ -19,7 +19,7 @@
 		<ul class="text-xl">
 			{#each lemmas as lemma, index}
 				<!-- svelte-ignore a11y_no_noninteractive_element_interactions -->
-				<li class=" py-2 px-1 cursor-pointer" class:dark:bg-green-950={lemma === selectedLemma || index === selected} class:bg-green-50={lemma === selectedLemma || index === selected} onclick={e=>showLemma(lemma)} onkeydown={e => e.key === 'enter' && showLemma(lemma)}>
+				<li class=" py-2 px-1 cursor-pointer" class:dark:bg-green-950={lemma === selectedLemma || index === selected} class:bg-green-50={lemma === selectedLemma || index === selected} onclick={()=>showLemma(lemma)} onkeydown={e => e.key === 'enter' && showLemma(lemma)}>
 					{#if persian}
 						<span dir="rtl" class="noto-sans-pe text-2xl px-2 text-right">{lemma.lemma}</span>
 					{:else}
@@ -48,11 +48,11 @@
 	const { data }: { data: PageData } = $props();
 
 	let term: string = $state("");
-	let persian: boolean = $state.frozen(false);
-	let selected: number = $state.frozen(-1);
-	let selectedLemma: Lemma | undefined = $state.frozen(undefined);
-	let lemmas: readonly Lemma[] = $state.frozen([]);
-	let translations: readonly Translation[] = $state.frozen([]);
+	let persian: boolean = $state.raw(false);
+	let selected: number = $state.raw(-1);
+	let selectedLemma: Lemma | undefined = $state.raw(undefined);
+	let lemmas: readonly Lemma[] = $state.raw([]);
+	let translations: readonly Translation[] = $state.raw([]);
 	let translationList: HTMLElement | null = $state(null);
 
 	$effect(() => {

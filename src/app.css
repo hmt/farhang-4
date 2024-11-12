@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');@tailwind utilities;
-@tailwind components;
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .noto-sans-400 {
   font-family: "Noto Sans", sans-serif;
   font-optical-sizing: auto;
@@ -9,6 +11,7 @@
   font-variation-settings:
     "wdth" 100;
 }
+
 .noto-sans-900 {
   font-family: "Noto Sans", sans-serif;
   font-optical-sizing: auto;
@@ -18,6 +21,7 @@
   font-variation-settings:
     "wdth" 100;
 }
+
 .noto-sans-pe {
   font-family: "Noto Sans Arabic", sans-serif;
   font-optical-sizing: auto;
